@@ -4,10 +4,20 @@ import fs from "fs";
 const app = express();
 let _id = 0;
 
+//global middleware used by all of the routes
 app.use(express.json());
 
+function auth(req, res, next) {
+  const username = req.headers.username;
+  const password = req.headers.password;
+  if (username != "shiva" || password != "123") {
+    res.status(401).send("unathorized");
+  }
+  next();
+}
+
 //completed
-app.get("/todos", (req, res) => {
+app.get("/todos", auth, (req, res) => {
   const fileContent = fs.readFileSync("./todos.json", "utf8");
   const data = JSON.parse(fileContent);
   res.json({ data });
@@ -57,6 +67,12 @@ app.post("/todos", (req, res) => {
 });
 
 app.delete("/todos/:id", (req, res) => {});
+
+app.use((err, req, res, next) => {
+  res.json({
+    msg: "Some Server error",
+  });
+});
 
 app.listen(3000, () => {
   console.log("running in port 3000");
