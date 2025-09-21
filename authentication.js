@@ -1,12 +1,23 @@
 import express from "express";
 import { z } from "zod";
 import jwt from "jsonwebtoken";
+import mongoose from "mongoose";
 
 const app = express();
+mongoose.connect(
+  "mongodb+srv://mikemax1998:Sivrahul%401998@cluster0.qedxute.mongodb.net/usersNew?retryWrites=true&w=majority&appName=Cluster0"
+);
 const key = "shiva200701";
-const users = ["shiva", "govind", "sohan", "kurapati", "Krishna", "Dundi"];
+
 app.use(express.json());
 
+const userSchema = new mongoose.Schema({
+  username: String,
+  password: String,
+});
+const User = mongoose.model("Users", userSchema);
+
+//validation middleware
 function validation(req, res, next) {
   const body = req.body;
   const userSchema = z.object({
@@ -22,10 +33,24 @@ function validation(req, res, next) {
   next();
 }
 
-app.post("/sigin", validation, (req, res) => {
+app.post("/signin", validation, async (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
   const token = jwt.sign(username, key);
+
+  const exists = await User.findOne({ username: username });
+  if (exists) {
+    res.send("username already taken");
+    return;
+  }
+
+  const user = new User({
+    username,
+    password,
+  });
+
+  await user.save();
+
   res.send(token);
 });
 
