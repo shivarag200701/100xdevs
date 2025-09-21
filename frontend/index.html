@@ -1,0 +1,31 @@
+<html>
+  <body>
+    <script>
+        let timeout
+        function debounce(){
+            clearTimeout(timeout)
+            timeout = setTimeout(()=>{
+                calculateDiv()
+            },500)
+        }
+        function calculateDiv(){
+            const a = document.getElementById("val1").value
+            const b = document.getElementById("val2").value
+
+            fetch(`http://localhost:3000/calculate?a=${a}&b=${b}`)
+            .then((response)=>{
+                response.json()
+            .then((sum)=>{
+                    document.getElementById("res").innerHTML = sum.sum
+                    
+                })
+            })
+        }
+    </script>
+    <div>
+      <input oninput="debounce()" id="val1" type="text" placeholder="enter number" /> <br></br>
+      <input oninput="debounce()" id="val2" type="text" placeholder="enter number" /><br></br>
+      <div id="res"></div>
+    </div>
+  </body>
+</html>
