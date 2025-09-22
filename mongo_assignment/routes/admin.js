@@ -1,6 +1,6 @@
 import { Router } from "express";
 import adminMiddleware from "../middleware/admin.js";
-import { Admin } from "../db/index.js";
+import { Admin, Course } from "../db/index.js";
 
 export const router = Router();
 
@@ -23,6 +23,21 @@ router.post("/signup", (req, res) => {
     });
 });
 
-router.post("/courses", adminMiddleware, (req, res) => {
-  console.log("user are authenticated using middleware");
+router.post("/courses", adminMiddleware, async (req, res) => {
+  const title = req.body.title;
+  const description = req.body.title;
+  const price = req.body.title;
+  const imageLink = req.body.title;
+
+  const course = await Course.create({
+    title,
+    description,
+    price,
+    imageLink,
+  });
+
+  res.json({
+    message: "Course Created sucessfully",
+    courseId: course._id,
+  });
 });
