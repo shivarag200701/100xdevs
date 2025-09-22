@@ -36,7 +36,7 @@ app.post("/todo", (req, res) => {
   });
 });
 
-app.get("/update-todo/:id", async (req, res) => {
+app.post("/update-todo/:id", async (req, res) => {
   const id = req.params.id;
   try {
     await toDo.updateOne(
