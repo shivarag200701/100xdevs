@@ -40,10 +40,15 @@ const RenderTodo = () => {
 
   const [counter, setCounter] = useState(0);
   const [num, setNum] = useState(0);
-  let sum = 0;
-  for (let i = 1; i < num; i++) {
-    sum = sum + i;
-  }
+  const [sum, setSum] = useState(0);
+
+  useEffect(() => {
+    let count = 0;
+    for (let i = 1; i < num; i++) {
+      count = count + i;
+      setSum(count);
+    }
+  }, [num]);
   return (
     <div>
       <input type="text" onChange={(e) => setNum(e.target.value)} />
