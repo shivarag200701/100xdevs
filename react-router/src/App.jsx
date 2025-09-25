@@ -1,28 +1,35 @@
-import { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React, { useState } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import "./App.css";
-import Dashboard from "./components/Dashboard";
-import Landing from "./components/Landing";
+const Dashboard = React.lazy(() => import("./components/Dashboard"));
+const Landing = React.lazy(() => import("./components/Landing"));
 
 function App() {
   const [count, setCount] = useState(0);
+  const navigate = useNavigate();
 
   return (
     <div>
       <div>
-        <button onClick={() => (window.location.href = "/")}>
+        <button
+          onClick={() => {
+            navigate("/");
+          }}
+        >
           Landing page
         </button>
-        <button onClick={() => (window.location.href = "/dashboard")}>
+        <button
+          onClick={() => {
+            navigate("/dashboard");
+          }}
+        >
           Dashboard
         </button>
       </div>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-        </Routes>
-      </BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
     </div>
   );
 }
