@@ -1,12 +1,6 @@
 import "./App.css";
-import {
-  RecoilRoot,
-  useRecoilState,
-  useRecoilValue,
-  useSetRecoilState,
-} from "recoil";
-import { countAtom } from "./store/atoms/count";
-import { useMemo } from "react";
+import { RecoilRoot, useRecoilValue, useSetRecoilState } from "recoil";
+import { countAtom, evenSelector } from "./store/atoms/count";
 
 function App() {
   return (
@@ -57,12 +51,12 @@ function Buttons() {
   );
 }
 function Iseven() {
-  const count = useRecoilValue(countAtom);
-  const isEven = useMemo(() => {
-    return count % 2 == 0;
-  }, [count]);
+  // const isEven = useMemo(() => {
+  //   return count % 2 == 0;
+  // }, [count]);
+  const isEven = useRecoilValue(evenSelector);
 
-  return <>{isEven ? "It is even" : ""}</>;
+  return <div>{isEven ? "It is even" : ""}</div>;
 }
 
 export default App;
