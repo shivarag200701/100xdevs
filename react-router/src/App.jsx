@@ -24,6 +24,8 @@ function Count() {
   );
 }
 function CountRenderer() {
+  console.log("countRenderer called");
+
   const { count } = useContext(CountContext);
   return <div>{count}</div>;
 }
