@@ -6,7 +6,7 @@ export const notificationAtom = atom({
   default: selector({
     key: "notficationSelector",
     get: async () => {
-      //   await new Promise((r) => setTimeout(r, 5000));
+      await new Promise((r) => setTimeout(r, 5000));
       await setTimeout(() => {
         console.log(1000);
       }, 5000);
