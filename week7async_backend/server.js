@@ -19,4 +19,31 @@ app.get("/linkedin_server", (req, res) => {
   res.json(data);
 });
 
+app.get("/todo", (req, res) => {
+  const { id } = req.query;
+  if (id == 1) {
+    res.json({
+      id: 1,
+      title: "title1",
+      description: "description1",
+    });
+  } else if (id == 2) {
+    res.json({
+      id: 2,
+      title: "title2",
+      description: "description2",
+    });
+  } else if (id == 3) {
+    res.json({
+      id: 3,
+      title: "title3",
+      description: "description3",
+    });
+  } else {
+    res.json({
+      msg: "todo not found",
+    });
+  }
+});
+
 app.listen(3000);
