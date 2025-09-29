@@ -7,7 +7,6 @@ function App() {
   return (
     <>
       <RecoilRoot>
-        <AtomStateUpdate />
         <Todo id={2} />
         <Todo id={1} />
         <Todo id={2} />
@@ -16,21 +15,10 @@ function App() {
   );
 }
 
-function AtomStateUpdate() {
-  const updateTodo2 = useSetRecoilState(todosAtomFamily(2));
-  useEffect(() => {
-    setTimeout(() => {
-      updateTodo2({
-        id: 2,
-        title: "New todo",
-        description: "I added a new todo",
-      });
-    }, 5000);
-  }, []);
-}
-
 function Todo({ id }) {
   const todo = useRecoilValue(todosAtomFamily(id));
+  console.log(todo);
+
   return (
     <>
       <div>{todo.title}</div>
