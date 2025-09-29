@@ -1,13 +1,19 @@
 import { atom, selector } from "recoil";
+import axios from "axios";
 
 export const notificationAtom = atom({
   key: "notificationAtom",
-  default: {
-    network: 10,
-    jobs: 5,
-    notifcations: 20,
-    posts: 10,
-  },
+  default: selector({
+    key: "notficationSelector",
+    get: async () => {
+      //   await new Promise((r) => setTimeout(r, 5000));
+      await setTimeout(() => {
+        console.log(1000);
+      }, 5000);
+      const res = await axios.get("http://localhost:3000/linkedin_server");
+      return res.data;
+    },
+  }),
 });
 
 export const totalNotificationSelector = selector({
@@ -17,7 +23,7 @@ export const totalNotificationSelector = selector({
     return (
       notifications.network +
       notifications.jobs +
-      notifications.notifcations +
+      notifications.notifications +
       notifications.posts
     );
   },

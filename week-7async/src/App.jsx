@@ -14,12 +14,13 @@ function App() {
 
 function MainApp() {
   const notifications = useRecoilValue(notificationAtom);
+
   const totalNotifications = useRecoilValue(totalNotificationSelector);
   return (
     <>
       <button>network ({notifications.network})</button>
       <button>jobs ({notifications.jobs})</button>
-      <button>network ({notifications.notifcations})</button>
+      <button>network ({notifications.notifications})</button>
       <button>notifcations ({notifications.posts})</button>
       <button>Total ({totalNotifications})</button>
     </>
