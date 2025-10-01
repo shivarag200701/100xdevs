@@ -9,8 +9,8 @@ const MainContent = () => {
       <Navbar />
       <Overview />
       <div className="flex gap-4">
-        <PillButton name={"Refunds"} count={32} />
-        <PillButton name={"Returns"} count={12} />
+        <PillButton name={"Refunds"} count={32} color={"#3b76b8"} />
+        <PillButton name={"Payouts"} count={22} color={"#eaeaea"} />
       </div>
     </div>
   );
