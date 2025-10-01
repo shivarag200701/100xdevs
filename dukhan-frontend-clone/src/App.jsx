@@ -1,12 +1,14 @@
 import "./App.css";
-import Navbar from "./Components/Navbar";
-import Overview from "./Components/Overview";
+import MainContent from "./Components/MainContent";
+import Sidebar from "./Components/sidebar";
 
 function App() {
   return (
     <>
-      <Navbar />
-      <Overview />
+      <div className="flex h-screen">
+        <Sidebar />
+        <MainContent />
+      </div>
     </>
   );
 }

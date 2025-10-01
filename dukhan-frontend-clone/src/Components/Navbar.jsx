@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 
 const Navbar = () => {
   return (
-    <div className="flex justify-between shadow-sm pl-5 pr-5 pt-4 pb-4 gap-10">
+    <div className="flex justify-between shadow-sm pl-5 pr-5 pt-4 pb-4 gap-10 ">
       <div className="flex justify-center items-center gap-2 ">
         <div className="hidden md:block text-xl font-semibold">Payouts</div>
         <svg

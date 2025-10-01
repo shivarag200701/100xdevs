@@ -30,8 +30,8 @@ const NextPayout = () => {
         </div>
 
         <div className="mt-4 flex items-start justify-between">
-          <div className="text-3xl font-semibold">$2,321.23</div>
-          <button className="flex items-center gap-1 underline">
+          <div className="text-2xl sm:text-3xl font-semibold">$2,321.23</div>
+          <button className="flex items-center gap-1 underline cursor-pointer">
             <span>23 Order(s)</span>
             <svg
               xmlns="http://www.w3.org/2000/svg"

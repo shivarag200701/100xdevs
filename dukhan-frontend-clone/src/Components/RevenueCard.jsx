@@ -2,7 +2,7 @@ import React from "react";
 
 const RevenueCard = ({ title, amount, orderCount }) => {
   return (
-    <div className="bg-white rounded-md flex flex-col shadow-md p-8 gap-5 hover:shadow-xl ">
+    <div className="bg-white rounded-md flex flex-col shadow-md p-5 gap-5 hover:shadow-xl ">
       <div className="text-gray-400 flex gap-2">
         <div>{title}</div>
         <svg
@@ -21,11 +21,11 @@ const RevenueCard = ({ title, amount, orderCount }) => {
         </svg>
       </div>
       <div className="flex justify-between ">
-        <div className="text-3xl">${amount}</div>
+        <div className="text-2xl sm:text-3xl">${amount}</div>
         <div className="">
           {orderCount ? (
-            <div className="flex gap-2 text-blue-700 cursor-pointer underline ">
-              <div>{orderCount} Order(s)</div>
+            <div className="flex gap-0 text-blue-700 cursor-pointer underline ">
+              <div className="">{orderCount} Order(s)</div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
