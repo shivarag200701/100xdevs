@@ -23,7 +23,8 @@ const SearchBar = () => {
       </span>
       <input
         type="text"
-        className="border-2 border-[#f4f4f4] rounded-md pl-10 py-2 "
+        className="border-2 border-[#f4f4f4] rounded-md pl-10 py-2 w-full md:w-sm"
+        placeholder="Order ID or transaction ID"
       />
     </div>
   );
