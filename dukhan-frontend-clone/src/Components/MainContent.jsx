@@ -3,6 +3,8 @@ import Overview from "./Overview";
 import Navbar from "./Navbar";
 import PillButton from "./PillButton";
 import SearchBar from "./SearchBar";
+import { GrDownload } from "react-icons/gr";
+import SortButton from "./SortButton";
 
 const MainContent = () => {
   return (
@@ -23,7 +25,15 @@ const MainContent = () => {
           text={"white"}
         />
       </div>
-      <SearchBar />
+      <div className="flex justify-between p-10">
+        <SearchBar />
+        <div className="flex justify-center items-center gap-4 ">
+          <SortButton />
+          <div className="border-2 border-[#f4f4f4] rounded-sm p-2 text-gray-500 hover:border-gray-300">
+            <GrDownload />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import React from "react";
 
 const SearchBar = () => {
   return (
-    <div className="relative p-10">
+    <div className="relative">
       <span className="absolute inset-y-0 flex items-center pl-3">
         <button
           type="submit"
