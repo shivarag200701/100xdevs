@@ -5,6 +5,7 @@ import PillButton from "./PillButton";
 import SearchBar from "./SearchBar";
 import { GrDownload } from "react-icons/gr";
 import SortButton from "./SortButton";
+import Table from "./Table";
 
 const MainContent = () => {
   return (
@@ -25,7 +26,7 @@ const MainContent = () => {
           text={"white"}
         />
       </div>
-      <div className="flex justify-between p-10">
+      <div className="flex justify-between pt-10 pr-10 pl-10 pb-3">
         <SearchBar />
         <div className="flex justify-center items-center gap-4 ">
           <SortButton />
@@ -34,6 +35,7 @@ const MainContent = () => {
           </div>
         </div>
       </div>
+      <Table />
     </div>
   );
 };
