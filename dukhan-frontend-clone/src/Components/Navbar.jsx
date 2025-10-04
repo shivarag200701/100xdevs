@@ -21,7 +21,7 @@ const Navbar = () => {
             d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z"
           />
         </svg>
-        <div className="text-gray-400 hidden md:block">How it works</div>
+        <div className="text-gray-400 hidden md:block">How it works sadads</div>
       </div>
       <div className="relative text-[#c4c3c3] flex-1 min-w-0  max-w-2xl">
         <span className="absolute inset-y-0 left-0 flex items-center pl-2">
