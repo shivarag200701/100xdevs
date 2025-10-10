@@ -1,13 +1,8 @@
-enum Direction {
-  up,
-  down,
-  left,
-  right,
+function firstEl<T>(arg: T[]) {
+  return arg[0];
 }
 
-function doSomething(key: Direction) {}
+const value1 = firstEl<string>(["shiva", "raghav"]);
+const value2 = firstEl<number>([1, 2]);
 
-doSomething(Direction.up);
-doSomething(Direction.down);
-doSomething(Direction.right);
-doSomething(Direction.left);
+console.log(value1?.toUpperCase());
