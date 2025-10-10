@@ -1,9 +1,13 @@
-interface User {
-  firstName: string;
-  lastName: string;
-  age: number;
+enum Direction {
+  up,
+  down,
+  left,
+  right,
 }
 
-function isLegal(user: User): boolean {
-  return user.age >= 18 ? true : false;
-}
+function doSomething(key: Direction) {}
+
+doSomething(Direction.up);
+doSomething(Direction.down);
+doSomething(Direction.right);
+doSomething(Direction.left);
