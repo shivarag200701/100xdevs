@@ -1,10 +1,9 @@
-function runFun(fn: (name: string) => string) {
-  setTimeout(() => {
-    console.log(fn("shiva"));
-  }, 1000);
+interface User {
+  firstName: string;
+  lastName: string;
+  age: number;
 }
-runFun(fun);
 
-function fun(name: string): string {
-  return `shiva is ${name}`;
+function isLegal(user: User): boolean {
+  return user.age >= 18 ? true : false;
 }
