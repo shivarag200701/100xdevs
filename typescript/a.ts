@@ -1,5 +1,8 @@
-function hello(name: string) {
-  console.log(`hello ${name}`);
+function runFun(fn: () => void) {
+  setTimeout(() => {
+    fn;
+  }, 1000);
 }
-
-hello("shiva");
+runFun(function () {
+  console.log("hi");
+});
