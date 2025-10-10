@@ -1,31 +1,40 @@
-import { useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+import React, { useEffect, useRef, useState } from "react";
 
-function useResize() {
-  const [size, setSize] = useState({ width: 0, height: 0 });
-
-  function handleResize(e) {
-    setSize({ width: window.innerWidth, height: window.innerHeight });
-  }
-
+function useDebounce(value, delay) {
+  const [debouncedValue, setDebouncedValue] = useState(0);
+  const valueRef = useRef();
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
-  }, []);
+    valueRef.current = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
 
-  return size;
+    return () => {
+      clearTimeout(valueRef.current);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
 }
 
-function App() {
-  const size = useResize();
+const SearchBar = () => {
+  const [inputValue, setInputValue] = useState("");
+  const debouncedValue = useDebounce(inputValue, 500); // 500 milliseconds debounce delay
+
+  // Use the debouncedValue in your component logic, e.g., trigger a search API call via a useEffect
 
   return (
     <>
-      <div>{size.width}</div>
-      <div>{size.height}</div>
+      <div style={{ display: "flex", flexDirection: "col" }}>
+        {debouncedValue}
+        <input
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          placeholder="Search..."
+        />
+      </div>
     </>
   );
-}
+};
 
-export default App;
+export default SearchBar;
