@@ -3,7 +3,17 @@ import { getCookie } from "hono/cookie";
 
 const app = new Hono();
 
-app.get("*", (c) => {
+async function authMiddleware(c: any, next: any) {
+  const auth = c.req.header("Authorization");
+
+  if (auth) {
+    next();
+  } else {
+    return c.json({ msg: "not autthenticated" });
+  }
+}
+
+app.get("*", authMiddleware, (c) => {
   // The name of the cookie
   const COOKIE_NAME = "Cookie_2";
 
