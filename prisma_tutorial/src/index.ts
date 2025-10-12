@@ -20,4 +20,46 @@ async function addUser(
   console.log(user);
 }
 
-addUser("mike", "shiva", "raghav", "12345");
+// addUser("mike", "shiva", "raghav", "12345");
+
+interface updateParams {
+  firstname: string;
+  lastname: string;
+}
+
+async function updateUser(
+  username: string,
+  { firstname, lastname }: updateParams
+) {
+  const user = await prisma.user.update({
+    where: {
+      username,
+    },
+    data: {
+      firstname,
+      lastname,
+    },
+  });
+}
+
+async function deleteUser(username: string) {
+  const user = await prisma.user.delete({
+    where: {
+      username,
+    },
+  });
+}
+deleteUser("mike");
+
+async function findUser(username: string) {
+  const user = await prisma.user.findUnique({
+    where: {
+      username,
+    },
+  });
+  console.log(user);
+}
+
+// findUser("mike");
+
+// updateUser("mike", { firstname: "ragahv", lastname: "shiva" });
