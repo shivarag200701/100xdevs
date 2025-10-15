@@ -1,12 +1,20 @@
-type User = {
-  name: string;
-  age: number;
-  email: string;
-};
+import { z } from "zod";
+import express from "express";
 
-const users = new Map<string, User>();
+const app = express();
 
-users.set("b4dsa", { name: "shiva", age: 23, email: "sadadsad" });
-users.set("b4d", { name: "sragh", age: 22, email: "sadad" });
+//run time validation scheme
+const userUpdateSchema = z.object({
+  name: z.string().min(2, { message: "enter a valid name" }),
+  age: z.number().min(18, { message: "need to be older than 18" }),
+  password: z.string().min(6, { message: "must be atleast 18" }),
+});
 
-users.get("b4d");
+//compile time validation
+type userUpdate = z.infer<typeof userUpdateSchema>;
+
+app.get("/", (req, res) => {
+  const { success } = z.safeParse(userUpdateSchema, req.body);
+
+  const data: userUpdate = req.body;
+});
