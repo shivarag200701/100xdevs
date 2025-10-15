@@ -7,4 +7,6 @@ interface User {
 
 type UpdateProps = Pick<User, "age" | "email" | "name">;
 
-function updateUser(updatePros: UpdateProps) {}
+type UpdatePropsOptional = Partial<UpdateProps>;
+
+function updateUser(updatePros: UpdatePropsOptional) {}
