@@ -1,5 +1,6 @@
 import Image from "next/image";
 import axios from "axios";
+import { User } from "./actions/user";
 
 async function fetchData() {
   await new Promise((r) => setTimeout(r, 5000));
@@ -8,6 +9,8 @@ async function fetchData() {
 }
 
 export default async function Home() {
-  const user = await fetchData();
-  return <div>{user.name}</div>;
+  const user = await User();
+  console.log(user);
+
+  return <div>{user.email}</div>;
 }
