@@ -2,6 +2,7 @@ import Image from "next/image";
 import axios from "axios";
 
 async function fetchData() {
+  await new Promise((r) => setTimeout(r, 5000));
   const res = await axios.get(
     "https://blogging_website.shivaraghav200701.workers.dev/api/v1/blog/bulk",
     {
